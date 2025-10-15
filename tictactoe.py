@@ -63,8 +63,12 @@ def result(board, action):
     """
     Returns the board that results from making move (i, j) on the board.
     """
+
+    # if action is None:
+    #     raise ValueError("Action cannot be None")
+    
     if (action == None):            # debugging
-        print ('in result')         # debugging
+        print ('in result')         # debugging  making a small change
         print (board)               # debugging
     
     mycopy = copy.deepcopy(board)
@@ -178,12 +182,36 @@ def minimax(board):
 
     best_move = None
     if current_player == X:
-        MaxValue(board)
+        best_move = MaxValue(board)
             
     if current_player == O:
-        MinValue(board)
+        best_move = MinValue(board)
 
     return best_move
+
+
+
+# iterate over all possible actions
+# , simulate the result
+# , and pick the move with the best outcome.
+# Notes
+
+#     if current_player == X:
+#         value = -math.inf
+#         for action in actions(board):
+#             min_value = MinValue(result(board, action))
+#             if min_value > value:
+#                 value = min_value
+#                 best_action = action
+#     else:
+#         value = math.inf
+#         for action in actions(board):
+#             max_value = MaxValue(result(board, action))
+#             if max_value < value:
+#                 value = max_value
+#                 best_action = action
+#     return best_action
+
 
     #raise NotImplementedError
 
